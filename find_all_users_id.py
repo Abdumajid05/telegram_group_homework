@@ -1,12 +1,16 @@
 from read_data import read_data
+import json 
 
 def find_all_users_id(data: dict)->list:
-    """ 
-    This function will find all the users in the json file and return the list of users id
+    l=[]
+    for i in data["messages"]:
+        if "from_id" in i:
+            l.append(i["from_id"])
+        else:
+            l.append(i["actor_id"])
+    return l
+
+print(find_all_users_id(read_data('result.json')))
+
+
     
-    Parameters:
-        data (dict): Dictionary containing the data of the json file
-    Returns:
-        list: List containing all the users id
-    """
-    return
